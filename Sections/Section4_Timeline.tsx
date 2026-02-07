@@ -55,14 +55,13 @@ export const Section4_Timeline: React.FC<Section4_TimelineProps> = ({ isActive }
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Handle Scroll to update pagination dots
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
     const handleScroll = () => {
         const scrollPosition = container.scrollLeft;
-        const cardWidth = container.offsetWidth * 0.85; // Approximate card width + gap
+        const cardWidth = container.offsetWidth * 0.75; 
         const index = Math.round(scrollPosition / cardWidth);
         setActiveIndex(Math.min(Math.max(index, 0), timelineData.length - 1));
     };
@@ -77,84 +76,82 @@ export const Section4_Timeline: React.FC<Section4_TimelineProps> = ({ isActive }
       isActive={isActive}
       bgOverlay="bg-gray-50/95"
     >
-      <div className="flex flex-col h-full pt-24 pb-28 relative z-10 overflow-hidden">
+      <div className="flex flex-col h-full pt-16 pb-16 relative z-10 overflow-hidden">
         
-        {/* Header */}
-        <div className={`px-6 mb-6 transition-all duration-700 flex-shrink-0 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-8 h-[4px] bg-orange rounded-full"></div>
-            <span className="text-orange text-[10px] font-mono tracking-[0.2em] font-black">1 DAY FLOW</span>
+        {/* Header - Scaled down */}
+        <div className={`px-4 mb-4 transition-all duration-700 flex-shrink-0 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-[3px] bg-orange rounded-full"></div>
+            <span className="text-orange text-[8px] font-mono tracking-[0.1em] font-black">1 DAY FLOW</span>
           </div>
-          <h2 className="text-3xl font-sans font-black text-navy leading-tight">
+          <h2 className="text-xl font-sans font-black text-navy leading-tight">
             不動産営業<br/>
             『入社1年目』の<span className="text-blue">リアル</span>
           </h2>
         </div>
 
-        {/* Horizontal Card Carousel */}
+        {/* Horizontal Card Carousel - Smaller Cards */}
         <div 
           ref={scrollRef}
-          className="flex-1 flex overflow-x-auto snap-x snap-mandatory no-scrollbar px-6 gap-5 items-center pb-4"
+          className="flex-1 flex overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 gap-4 items-center pb-2"
         >
            {timelineData.map((item, index) => (
              <div 
                key={item.id}
                className={`
                  relative flex-shrink-0 snap-center
-                 w-[85vw] max-w-[320px] aspect-square
-                 bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100
+                 w-[75vw] max-w-[280px] aspect-[4/5]
+                 bg-white rounded-[1.5rem] shadow-lg overflow-hidden border border-gray-100
                  flex flex-col
                  transition-all duration-500
                `}
                style={{
                   opacity: isActive ? 1 : 0,
-                  transform: isActive ? 'scale(1)' : 'scale(0.95)',
+                  transform: isActive ? 'scale(1)' : 'scale(0.97)',
                   transitionDelay: `${index * 100}ms`
                }}
              >
-                {/* Top Half: Image */}
-                <div className="h-1/2 w-full relative overflow-hidden group">
+                {/* Top Half: Image - Reduced height ratio */}
+                <div className="h-[40%] w-full relative overflow-hidden group">
                    <img 
                       src={item.image} 
                       alt={item.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                    />
-                   <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent flex items-end p-4">
-                      <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-2">
-                         <Clock size={14} className="text-orange" />
-                         <span className="text-sm font-mono font-black text-navy tracking-widest">{item.time}</span>
+                   <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent flex items-end p-3">
+                      <div className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center gap-1.5">
+                         <Clock size={10} className="text-orange" />
+                         <span className="text-[10px] font-mono font-black text-navy tracking-widest">{item.time}</span>
                       </div>
                    </div>
                 </div>
 
-                {/* Bottom Half: Content */}
-                <div className="h-1/2 w-full p-6 flex flex-col justify-center bg-white relative">
-                   {/* Decorative Number */}
-                   <div className="absolute top-4 right-6 text-[40px] font-sans font-black text-gray-100 leading-none select-none">
+                {/* Bottom Half: Content - Scaled down text */}
+                <div className="h-[60%] w-full p-5 flex flex-col justify-center bg-white relative">
+                   <div className="absolute top-3 right-5 text-[28px] font-sans font-black text-gray-50 leading-none select-none">
                       {item.id.toString().padStart(2, '0')}
                    </div>
 
-                   <h3 className="text-xl font-bold text-navy mb-3 relative z-10">
+                   <h3 className="text-base font-bold text-navy mb-2 relative z-10">
                       {item.title}
                    </h3>
-                   <p className="text-sm text-gray-500 font-medium leading-relaxed whitespace-pre-line relative z-10">
+                   <p className="text-[11px] text-gray-400 font-bold leading-relaxed whitespace-pre-line relative z-10">
                       {item.desc}
                    </p>
                 </div>
              </div>
            ))}
-           {/* Spacer for right padding */}
            <div className="w-1 flex-shrink-0" />
         </div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center items-center gap-2 h-8 mt-2">
+        {/* Pagination Dots - Smaller */}
+        <div className="flex justify-center items-center gap-1.5 h-6 mt-1">
             {timelineData.map((_, idx) => (
                 <div 
                     key={idx}
                     className={`
-                        h-2 rounded-full transition-all duration-300
-                        ${activeIndex === idx ? 'w-8 bg-orange' : 'w-2 bg-gray-300'}
+                        h-1.5 rounded-full transition-all duration-300
+                        ${activeIndex === idx ? 'w-6 bg-orange' : 'w-1.5 bg-gray-300'}
                     `}
                 />
             ))}

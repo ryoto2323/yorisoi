@@ -59,70 +59,70 @@ export const Section11_Action: React.FC<Section11_ActionProps> = ({ isActive, on
          ))}
       </div>
 
-      <div className="flex flex-col h-full items-center text-center justify-evenly relative z-10 px-4 py-6">
+      <div className="flex flex-col h-full items-center text-center justify-evenly relative z-10 px-4 py-4">
         
-        <div className={`transition-all duration-1000 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="relative inline-block rotate-[-1deg] mb-6">
-                <p className="text-base font-handwritingJP font-bold text-navy/80 leading-relaxed">
+        <div className={`transition-all duration-1000 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <div className="relative inline-block rotate-[-0.5deg] mb-4">
+                <p className="text-sm font-handwritingJP font-bold text-navy/80 leading-relaxed">
                     履歴書の準備、リクルートスーツ…<br/>
                     正直、めんどくさいですよね。
                 </p>
             </div>
 
-            <div className="relative inline-block mb-8">
-                <span className={`absolute bottom-1.5 left-[-5%] w-[110%] h-[0.5em] bg-[#FACC15]/50 -rotate-1 rounded-sm -z-10 transition-all duration-1000 delay-500 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0'}`}></span>
-                <h2 className="text-4xl font-sans font-black text-orange tracking-tighter drop-shadow-sm transform scale-105">
+            <div className="relative inline-block mb-6">
+                <span className={`absolute bottom-1 left-[-5%] w-[110%] h-[0.5em] bg-[#FACC15]/40 -rotate-1 rounded-sm -z-10 transition-all duration-1000 delay-500 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0'}`}></span>
+                <h2 className="text-3xl font-sans font-black text-orange tracking-tighter drop-shadow-sm transform scale-105">
                     必要ありません！
                 </h2>
             </div>
 
-            <p className="text-[15px] text-gray-700 font-bold leading-[1.8] tracking-wide">
+            <p className="text-[13px] text-gray-700 font-bold leading-relaxed tracking-wide">
                 まずは私服で、コーヒーを飲みながら。<br/>
-                <span className="text-navy border-b-2 border-orange/30">『カジュアル面談』</span>から始めましょう。
+                <span className="text-navy border-b border-orange/30">『カジュアル面談』</span>から始めましょう。
             </p>
         </div>
 
-        <div className={`w-full max-w-[320px] flex flex-col gap-2 transition-all duration-1000 delay-300 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`w-full max-w-[280px] flex flex-col gap-2 transition-all duration-1000 delay-300 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <a 
                 href="https://timerex.net/s/dami.01010202_e3d4/e261a323"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative w-full block bg-orange text-white rounded-xl shadow-xl transition-all duration-200 overflow-hidden animate-pulse-scale"
+                className="group relative w-full block bg-orange text-white rounded-lg shadow-lg transition-all duration-200 overflow-hidden animate-pulse-scale"
             >
-                 <div className="relative flex items-stretch h-20 text-left">
-                     <div className="flex-1 flex flex-col items-center justify-center p-2 z-10 text-center">
-                         <div className="flex items-center gap-1.5 mb-0.5">
-                            <Ticket className="w-4 h-4" />
-                            <span className="text-[8px] font-mono font-black tracking-widest bg-white/20 px-1.5 py-0.5 rounded uppercase">FREE TICKET</span>
+                 <div className="relative flex items-stretch h-16 text-left">
+                     <div className="flex-1 flex flex-col items-center justify-center p-1.5 z-10 text-center">
+                         <div className="flex items-center gap-1 mb-0.5">
+                            <Ticket className="w-3 h-3" />
+                            <span className="text-[7px] font-mono font-black tracking-widest bg-white/20 px-1 py-0.5 rounded uppercase">FREE TICKET</span>
                          </div>
-                         <span className="text-lg font-black">カジュアル面談を予約する</span>
+                         <span className="text-base font-black">カジュアル面談を予約する</span>
                      </div>
-                     <div className="w-12 bg-black/10 flex items-center justify-center">
-                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
+                     <div className="w-10 bg-black/10 flex items-center justify-center">
+                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                      </div>
                  </div>
             </a>
             
-            <p className="text-[9px] font-bold text-gray-400 flex items-center justify-center gap-1">
-                <MousePointerClick size={10} />
+            <p className="text-[8px] font-bold text-gray-400 flex items-center justify-center gap-1">
+                <MousePointerClick size={9} />
                 ※所要時間：30分 / オンラインOK
             </p>
         </div>
 
-        <div className={`flex flex-col items-center gap-4 transition-all duration-1000 delay-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`flex flex-col items-center gap-3 transition-all duration-1000 delay-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
              <button 
                 onClick={() => onScrollToSection(1)}
                 className="flex flex-col items-center gap-0.5 group"
              >
-                <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 transition-colors">
-                    <ChevronUp size={16} />
+                <div className="w-7 h-7 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 transition-colors">
+                    <ChevronUp size={14} />
                 </div>
-                <span className="text-[8px] font-black font-mono tracking-widest text-gray-300 uppercase">BACK TO TOP</span>
+                <span className="text-[7px] font-black font-mono tracking-widest text-gray-200 uppercase">BACK TO TOP</span>
              </button>
 
-             <div className="text-center opacity-40">
-                <div className="text-xl font-sans font-black tracking-widest text-gray-200">YORISOI</div>
-                <p className="text-[8px] text-gray-300 font-mono mt-0.5">© 2026 Yorisoi Real Estate</p>
+             <div className="text-center opacity-30">
+                <div className="text-lg font-sans font-black tracking-widest text-gray-200">YORISOI</div>
+                <p className="text-[7px] text-gray-200 font-mono mt-0.5">© 2026 Yorisoi Real Estate</p>
              </div>
         </div>
 
