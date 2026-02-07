@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { Section } from './Section';
 import { Quote } from 'lucide-react';
@@ -24,7 +23,6 @@ const interviews = [
   }
 ];
 
-// Define missing interface for component props
 interface Section6_ChatProps {
   isActive: boolean;
 }
@@ -50,50 +48,51 @@ export const Section6_Chat: React.FC<Section6_ChatProps> = ({ isActive }) => {
 
   return (
     <Section id={6} isActive={isActive} bgOverlay="bg-gray-50">
-      <div className="flex flex-col h-full pt-16 pb-16 relative z-10 overflow-hidden">
+      <div className="flex flex-col h-full pt-12 pb-16 relative z-10 overflow-hidden justify-evenly">
         
-        <div className={`px-5 mb-4 transition-all duration-700 flex-shrink-0 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
-          <div className="flex items-center gap-2 mb-2">
+        <div className={`px-5 transition-all duration-700 flex-shrink-0 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
+          <div className="flex items-center gap-2 mb-1">
             <div className="w-6 h-[2.5px] bg-orange rounded-full"></div>
-            <span className="text-orange text-[8px] font-mono tracking-[0.1em] font-black">REAL VOICE</span>
+            <span className="text-orange text-[8px] font-mono tracking-[0.1em] font-black uppercase">REAL VOICE</span>
           </div>
           <h2 className="text-xl font-sans font-black text-navy leading-tight">
-            一人じゃ越えられない壁も、<br/>
-            <span className="text-orange">ここなら越えられる。</span>
+            壁も、<span className="text-orange">ここなら越えられる。</span>
           </h2>
         </div>
 
-        <div ref={scrollRef} className="flex-1 flex overflow-x-auto snap-x snap-mandatory no-scrollbar px-5 gap-4 items-center pb-2">
+        {/* Increased Card and Image height to make images more visible */}
+        <div ref={scrollRef} className="flex-1 flex overflow-x-auto snap-x snap-mandatory no-scrollbar px-6 gap-4 items-center">
             {interviews.map((item, index) => (
                 <div 
                     key={item.id}
-                    className="relative flex-shrink-0 snap-center w-[80vw] max-w-[280px] h-[75%] bg-white rounded-[1.5rem] shadow-lg overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 ease-out"
+                    className="relative flex-shrink-0 snap-center w-[78vw] max-w-[280px] h-[80%] bg-white rounded-[1.2rem] shadow-xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 ease-out"
                     style={{ opacity: isActive ? 1 : 0, transform: isActive ? 'scale(1)' : 'scale(0.96)', transitionDelay: `${index * 150}ms` }}
                 >
-                    {/* Image Area Increased to 55% */}
-                    <div className="h-[55%] w-full relative overflow-hidden">
+                    {/* Image Area Priority: 65% height */}
+                    <div className="h-[65%] w-full relative overflow-hidden">
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover object-top" />
-                        <div className="absolute top-2 left-2 bg-white/80 backdrop-blur-sm p-1.5 rounded-full text-navy shadow-sm">
-                            <Quote size={14} className={item.color} fill="currentColor" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md p-1.5 rounded-full text-navy shadow-sm">
+                            <Quote size={12} className={item.color} fill="currentColor" />
                         </div>
                     </div>
 
-                    <div className="h-[45%] p-4 flex flex-col justify-between bg-white">
+                    <div className="h-[35%] p-3.5 flex flex-col justify-between bg-white">
                         <div>
-                            <h3 className="text-sm font-black text-navy leading-tight mb-2 whitespace-pre-line">
+                            <h3 className="text-[12px] font-black text-navy leading-tight mb-1.5 whitespace-pre-line">
                                 {item.headline}
                             </h3>
-                            <p className="text-[10px] text-gray-500 font-bold leading-relaxed line-clamp-3">
+                            <p className="text-[9px] text-gray-500 font-bold leading-tight line-clamp-2">
                                 {item.text}
                             </p>
                         </div>
 
-                        <div className="flex items-center justify-between border-t border-gray-50 pt-2">
+                        <div className="flex items-center justify-between border-t border-gray-50 pt-2 mt-auto">
                             <div>
-                                <p className="text-[10px] font-black text-navy">{item.name}</p>
-                                <p className="text-[8px] font-bold text-gray-400">{item.role}</p>
+                                <p className="text-[9px] font-black text-navy">{item.name}</p>
+                                <p className="text-[7px] font-bold text-gray-400">{item.role}</p>
                             </div>
-                            <div className={`w-1.5 h-1.5 rounded-full ${item.color.replace('text-', 'bg-')}`}></div>
+                            <div className={`w-1 h-1 rounded-full ${item.color.replace('text-', 'bg-')}`}></div>
                         </div>
                     </div>
                 </div>
@@ -101,7 +100,7 @@ export const Section6_Chat: React.FC<Section6_ChatProps> = ({ isActive }) => {
             <div className="w-1 flex-shrink-0"></div>
         </div>
 
-        <div className="flex justify-center items-center gap-1.5 mt-1 h-4">
+        <div className="flex justify-center items-center gap-1.5 h-2">
             {interviews.map((_, idx) => (
                 <div key={idx} className={`h-1 rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-4 bg-navy' : 'w-1 bg-gray-200'}`} />
             ))}

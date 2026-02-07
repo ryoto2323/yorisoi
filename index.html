@@ -87,19 +87,6 @@
         }
       }
 
-      /* Liquid Distortion Transition Effect (Mobile Only) */
-      .liquid-entrance {
-        filter: url(#liquid-filter);
-        transition: filter 1.4s cubic-bezier(0.2, 0, 0.2, 1);
-        will-change: filter, transform, opacity;
-      }
-      .liquid-entrance.mood-slow {
-        filter: url(#liquid-filter-slow);
-      }
-      .active .liquid-entrance {
-        filter: none;
-      }
-
       @keyframes float-qr {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-10px); }
@@ -173,20 +160,7 @@
     <!-- Main Content Root -->
     <div id="root"></div>
 
-    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
-      <filter id="liquid-filter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="5">
-          <animate attributeName="baseFrequency" dur="8s" values="0.012;0.008;0.012" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scale="60" />
-      </filter>
-      <filter id="liquid-filter-slow">
-        <feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="2" seed="1">
-          <animate attributeName="baseFrequency" dur="20s" values="0.005;0.003;0.005" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scale="20" />
-      </filter>
-    </svg>
+    <!-- Removed SVG Filters for opening animation -->
   <script type="module" src="/index.tsx"></script>
 </body>
 </html>

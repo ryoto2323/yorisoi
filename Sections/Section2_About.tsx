@@ -20,7 +20,7 @@ export const Section2_About: React.FC<Section2_AboutProps> = ({ isActive }) => {
       bgOverlay="bg-cream"
     >
       <div className="flex flex-col h-full px-2 relative z-10 justify-evenly py-4">
-        {/* Header - Scaled down */}
+        {/* Header */}
         <div className={`transition-all duration-700 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
            <div className="flex items-center gap-2 mb-1">
               <div className="w-5 h-[2px] bg-orange rounded-full"></div>
@@ -32,8 +32,8 @@ export const Section2_About: React.FC<Section2_AboutProps> = ({ isActive }) => {
            </h2>
         </div>
 
-        {/* Main Content - Scaled down */}
-        <div className="w-full max-w-[300px] mx-auto space-y-1.5">
+        {/* Main Content - Increased Font Size for Labels as requested */}
+        <div className="w-full max-w-[300px] mx-auto space-y-2">
            {stats.map((stat, index) => {
              const isEven = index % 2 !== 0;
              
@@ -51,11 +51,11 @@ export const Section2_About: React.FC<Section2_AboutProps> = ({ isActive }) => {
                      transform: isActive ? 'translateX(0)' : `translateX(${isEven ? '15px' : '-15px'})`
                    }}
                  >
-                    <div className={`flex flex-col mb-0 relative z-20 ${isEven ? 'items-end' : 'items-start'}`}>
-                       <p className="text-[9px] font-bold text-navy tracking-tight">
+                    <div className={`flex flex-col mb-0.5 relative z-20 ${isEven ? 'items-end' : 'items-start'}`}>
+                       <p className="text-[12px] font-bold text-navy tracking-tight leading-tight">
                          {stat.label}
                        </p>
-                       <span className={`text-[8px] font-bold text-gray-400 bg-white/80 border border-gray-50 px-1 py-0.5 rounded shadow-xs whitespace-nowrap`}>
+                       <span className={`text-[10px] font-bold text-gray-500 bg-white/60 border border-gray-100 px-1.5 py-0.5 rounded-md shadow-xs whitespace-nowrap mt-0.5`}>
                          {stat.desc}
                        </span>
                     </div>

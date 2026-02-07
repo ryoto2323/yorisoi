@@ -11,7 +11,6 @@ export const Section3_Message: React.FC<Section3_MessageProps> = ({ isActive }) 
       id={3} 
       isActive={isActive}
       bgOverlay="bg-transparent"
-      mood="slow"
     >
       <div className="absolute top-0 left-0 w-full h-[45%] z-0 bg-white">
          <img 
@@ -23,15 +22,20 @@ export const Section3_Message: React.FC<Section3_MessageProps> = ({ isActive }) 
       </div>
 
       <div 
-        className={`absolute bottom-0 w-full h-[60%] bg-[#FEFDF5] rounded-t-[2rem] px-6 pt-8 pb-10 flex flex-col z-10 shadow-2xl transition-all duration-1000 delay-300 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
+        className={`
+          absolute bottom-0 w-full h-[60%] bg-[#FEFDF5] rounded-t-[2.5rem] px-6 pt-8 pb-10 flex flex-col z-10 
+          shadow-[0_-20px_50px_-10px_rgba(15,23,42,0.12)] 
+          transition-all duration-1000 delay-300
+          ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
+        `}
       >
          <div className="relative z-10 flex flex-col h-full font-handwritingJP text-[#001f3f]">
-            <h2 className="text-[20px] font-bold leading-relaxed mb-4 tracking-wide">
+            <h2 className="text-[20px] font-bold leading-relaxed mb-4 tracking-wide shrink-0">
               未完成な私たちを、<br/>
-              面白がってくれる人へ。
+              面白がってくれる人へ.
             </h2>
             
-            <div className="overflow-y-auto no-scrollbar pr-1 pb-4 flex-1">
+            <div className="overflow-y-auto custom-scrollbar pr-1 pb-4 flex-1 overscroll-y-auto">
                 <div className="text-[15px] leading-[1.8] font-medium tracking-wider">
                     <p className="mb-4">
                         正直に言います。<br/>

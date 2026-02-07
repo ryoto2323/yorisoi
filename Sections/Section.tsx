@@ -6,7 +6,6 @@ interface SectionProps {
   bgImage?: string;
   bgOverlay?: string;
   className?: string;
-  mood?: 'fast' | 'slow';
   children: React.ReactNode;
 }
 
@@ -16,7 +15,6 @@ export const Section: React.FC<SectionProps> = ({
   bgImage, 
   bgOverlay = "bg-white/40",
   className = "", 
-  mood = 'fast',
   children 
 }) => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -65,12 +63,11 @@ export const Section: React.FC<SectionProps> = ({
           </span>
       </div>
 
-      {/* Content Container - Reduced internal padding */}
+      {/* Content Container - Removed liquid-entrance */}
       <div className={`
-        relative z-10 w-full h-full flex flex-col justify-evenly px-4 py-4 liquid-entrance
-        ${mood === 'slow' ? 'mood-slow' : ''}
-        transition-all duration-1200 ease-spring
-        ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-[0.98] pointer-events-none'}
+        relative z-10 w-full h-full flex flex-col justify-evenly px-4 py-4
+        transition-all duration-700 ease-spring
+        ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-[0.98] pointer-events-none'}
       `}>
         {children}
       </div>
