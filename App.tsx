@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MobileWrapper } from './components/Layout/MobileWrapper';
 import { BottomNav } from './components/Navigation/BottomNav';
 import { EntryModal } from './components/UI/EntryModal';
-import { StoryProgress } from './components/UI/StoryProgress';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 // Sections
@@ -63,8 +62,7 @@ const App: React.FC = () => {
 
   return (
     <MobileWrapper activeSection={activeSection}>
-      {/* Story Progress Indicator (Direction #3) */}
-      <StoryProgress current={activeSection} total={11} />
+      {/* Sidebar Progress Indicator removed to fix mobile layout issues */}
 
       {/* Global Hamburger Button */}
       <button 
