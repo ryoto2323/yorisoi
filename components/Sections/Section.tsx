@@ -38,10 +38,10 @@ export const Section: React.FC<SectionProps> = ({
 
   return (
     <section 
-      className={`w-full h-full snap-start snap-always relative flex-shrink-0 overflow-hidden text-navy ${className} ${isActive ? 'active' : ''}`}
+      className={`w-full h-[100svh] snap-start snap-always relative flex-shrink-0 overflow-hidden text-navy ${className} ${isActive ? 'active' : ''}`}
       data-index={id}
     >
-      {/* Background with Parallax (Direction #3) */}
+      {/* Background with Parallax */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-cream">
         {bgImage && (
           <img 
@@ -59,15 +59,15 @@ export const Section: React.FC<SectionProps> = ({
       </div>
 
       {/* Step Indicator */}
-      <div className={`absolute top-10 right-8 z-30 transition-all duration-1000 delay-500 ease-spring ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
+      <div className={`absolute top-6 right-6 z-30 transition-all duration-1000 delay-500 ease-spring ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'}`}>
           <span className="text-[9px] font-black font-mono tracking-[0.4em] text-navy/40 bg-white/40 px-5 py-2.5 rounded-full backdrop-blur-xl border border-white/20 shadow-sm">
               <span className="text-navy">{currentId}</span> <span className="mx-1 opacity-20">/</span> {totalSections}
           </span>
       </div>
 
-      {/* Content Container with Liquid Entrance (Direction #1: Mood synced) */}
+      {/* Content Container with Liquid Entrance & 100svh support */}
       <div className={`
-        relative z-10 w-full h-full flex flex-col liquid-entrance
+        relative z-10 w-full h-full flex flex-col justify-evenly px-5 py-5 liquid-entrance
         ${mood === 'slow' ? 'mood-slow' : ''}
         transition-all duration-1200 ease-spring
         ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-[0.97] pointer-events-none'}

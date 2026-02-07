@@ -33,7 +33,7 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({ children, activeSe
   const { c1, c2, blur } = getThemeColors();
 
   return (
-    <div className="relative w-full min-h-screen bg-navy flex items-center justify-center overflow-hidden font-sans transition-colors duration-500">
+    <div className="relative w-full h-[100svh] bg-navy flex items-center justify-center overflow-hidden font-sans transition-colors duration-500">
       
       {/* Dynamic Ambient Ambience (Hidden on large screens by index.html logic) */}
       <div className={`absolute inset-0 z-0 opacity-60 pointer-events-none transition-all duration-[2000ms] ${blur}`}>
@@ -44,7 +44,7 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({ children, activeSe
       {/* Mobile Frame Container */}
       <div className="
         relative z-10 
-        w-full h-[100dvh] 
+        w-full h-[100svh] 
         md:w-[420px] md:h-[92vh] md:max-h-[920px] 
         md:rounded-[3.5rem] md:border-[12px] md:border-white/10 md:backdrop-blur-3xl
         md:shadow-[0_60px_120px_-20px_rgba(0,0,0,0.7)]
