@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Yorisoi不動産 RECRUITING | Beyond Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@400;700&family=Zen+Old+Mincho:wght@700;900&family=Caveat:wght@400;700&family=Zen+Kurenaido&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandRed: '#E60012',
+              navy: '#0F172A',
+              orange: '#FF6B00',
+              blue: '#0EA5E9',
+              cream: '#FFFBF5',
+              white: '#FFFFFF',
+              yellow: '#FACC15',
+              sky: '#F0F9FF',
+            },
+            fontFamily: {
+              sans: ['"Noto Sans JP"', '"Inter"', 'sans-serif'],
+              mono: ['"Space Grotesk"', 'monospace'],
+              serif: ['"Zen Old Mincho"', 'serif'],
+              handwriting: ['"Caveat"', 'cursive'],
+              handwritingJP: ['"Zen Kurenaido"', 'sans-serif'],
+              condensed: ['"Oswald"', 'sans-serif'],
+            },
+            transitionTimingFunction: {
+              'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      body {
+        font-family: '"Noto Sans JP"', sans-serif;
+        background-color: #0F172A;
+        color: #0F172A;
+        overscroll-behavior-y: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* PC Layout override (Direction #1: min-width 1024px only) */
+      @media screen and (min-width: 1024px) {
+        body {
+          background-color: #f5f5f5 !important;
+        }
+
+        /* PC specific Scrollbar visibility */
+        .pc-scrollbar::-webkit-scrollbar {
+          display: block !important;
+          width: 8px !important;
+        }
+        .pc-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1 !important;
+        }
+        .pc-scrollbar::-webkit-scrollbar-thumb {
+          background: #ccc !important;
+          border-radius: 4px !important;
+        }
+        .pc-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #999 !important;
+        }
+
+        /* Force scale and padding on the container to prevent clipping */
+        .pc-scale-container {
+          transform: scale(0.9);
+          transform-origin: top center;
+        }
+
+        /* PC Layout Hard Reset for Sections */
+        main.snap-y {
+          scroll-snap-type: none !important;
+        }
+
+        section {
+          height: auto !important;
+          min-height: 100vh !important;
+          padding-top: 80px !important;
+          padding-bottom: 80px !important;
+          scroll-snap-align: none !important;
+        }
+
+        /* Fix for inner containers that were forcing 100% height clipping content */
+        section > div.liquid-entrance {
+          height: auto !important;
+          min-height: calc(100vh - 160px) !important;
+        }
+
+        /* Specific section overrides for PC */
+        section[data-index="8"] {
+          padding-bottom: 80px !important;
+        }
+        section[data-index="11"] {
+          padding-bottom: 40px !important;
+        }
+      }
+
+      /* Liquid Distortion Transition Effect */
+      .liquid-entrance {
+        filter: url(#liquid-filter);
+        transition: filter 1.4s cubic-bezier(0.2, 0, 0.2, 1);
+        will-change: filter, transform, opacity;
+      }
+      /* Slow mood for "Yorisoi" sections */
+      .liquid-entrance.mood-slow {
+        filter: url(#liquid-filter-slow);
+      }
+      .active .liquid-entrance {
+        filter: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .liquid-entrance {
+          filter: none !important;
+          transition: opacity 0.5s ease-in-out !important;
+        }
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .bg-noise {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      @keyframes ambient-float {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(15%, -15%) scale(1.2); }
+        66% { transform: translate(-10%, 20%) scale(0.85); }
+      }
+      .ambient-blur {
+        animation: ambient-float 25s ease-in-out infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+      <filter id="liquid-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="5">
+          <animate attributeName="baseFrequency" dur="8s" values="0.012;0.008;0.012" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="60" />
+      </filter>
+      <filter id="liquid-filter-slow">
+        <feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="2" seed="1">
+          <animate attributeName="baseFrequency" dur="20s" values="0.005;0.003;0.005" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="20" />
+      </filter>
+    </svg>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
