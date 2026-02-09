@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Section } from './Section';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 interface Section1_HeroProps {
   isActive: boolean;
@@ -16,84 +17,107 @@ export const Section1_Hero: React.FC<Section1_HeroProps> = ({ isActive, onOpenMo
       className="bg-white"
       bgOverlay="bg-transparent"
     >
-      <div className="absolute inset-[-50vh] bg-white z-[-1]" />
-
-      {/* Kinetic Typography - Reduced opacity/size slightly */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
-         <div className={`absolute top-[18%] right-[-10%] text-[100px] font-black text-gray-100/30 font-condensed tracking-tighter transition-all duration-[4000ms] ease-spring ${isActive ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
-            FUTURE
-         </div>
-         <div className={`absolute bottom-[28%] left-[-10%] text-[100px] font-black text-gray-100/30 font-condensed tracking-tighter transition-all duration-[4000ms] delay-500 ease-spring ${isActive ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
-            YORISOI
-         </div>
+      <div className="absolute inset-0 overflow-hidden z-[-1]">
+        <div className="absolute inset-0 bg-[#FAFAFA]" />
+        <div 
+            className={`absolute top-[-10%] right-[-20%] w-[80vw] h-[80vw] bg-orange/10 rounded-full blur-[60px] md:blur-[120px] mix-blend-multiply transition-transform duration-[4000ms] ease-in-out will-change-transform ${isActive ? 'scale-110' : 'scale-100'}`} 
+            style={{ animation: 'breathe 8s infinite alternate' }}
+        />
+        <div 
+            className={`absolute bottom-[30%] left-[-20%] w-[70vw] h-[70vw] bg-blue/5 rounded-full blur-[70px] md:blur-[140px] mix-blend-multiply transition-transform duration-[5000ms] ease-in-out will-change-transform ${isActive ? 'scale-110' : 'scale-100'}`} 
+            style={{ animation: 'breathe 10s infinite alternate-reverse' }}
+        />
       </div>
 
-      <div className="flex flex-col h-full pt-8 px-2 relative z-10 justify-evenly">
+      <style>{`
+        @keyframes breathe {
+          0% { transform: scale(1); opacity: 0.5; }
+          100% { transform: scale(1.05); opacity: 0.7; }
+        }
+      `}</style>
+
+      {/* Grid Layout for PC */}
+      <div className="flex flex-col md:grid md:grid-cols-2 md:items-center h-full pt-[calc(3rem+env(safe-area-inset-top))] relative z-10 gap-8">
         
-        <div className={`transition-all duration-1200 ease-spring ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-          <div className="inline-block border border-orange/10 bg-orange/5 text-orange text-[8px] font-black px-3 py-1 rounded-full mb-3 tracking-[0.2em] shadow-sm backdrop-blur-md">
-            YORISOI OFFICIAL RECRUITING
-          </div>
+        {/* Left: Text Content */}
+        <div className="flex flex-col justify-center px-2 md:pl-8">
+            <div className="mb-8 opacity-100 translate-y-0">
+              <div className="inline-flex items-center gap-2 mb-6 bg-navy/[0.03] px-3 py-1 rounded-full border border-navy/[0.05]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange animate-pulse"></span>
+                  <span className="text-[10px] font-bold text-navy/50 tracking-widest font-mono">RECRUITING 2026</span>
+              </div>
 
-          <h1 className="text-navy font-sans mb-3 select-none tracking-tight flex flex-col gap-0">
-            <span className="block text-[26px] font-black text-[#111111] leading-tight">
-              一生モノの
-            </span>
-            <span className="flex items-baseline gap-1.5">
-              <span className={`text-[38px] font-handwritingJP text-orange font-black block leading-[1.1] transition-all duration-[1200ms] delay-700 ease-spring ${isActive ? 'scale-100 rotate-0' : 'scale-75 -rotate-6 opacity-0'}`}>
-                ありがとう
-              </span>
-              <span className="text-[22px] font-black text-[#111111] leading-tight">
-                を
-              </span>
-            </span>
-            <span className="block text-[26px] font-black text-[#111111] leading-tight">
-              受けとろう
-            </span>
-          </h1>
+              <h1 className="text-navy font-sans select-none tracking-tight flex flex-col items-start leading-none">
+                <span className="block text-[28px] md:text-[36px] font-handwritingJP font-bold text-gray-800 mb-3 ml-0.5">一生モノの</span>
+                
+                <div className="relative inline-flex items-end gap-3 my-1 whitespace-nowrap">
+                  <span 
+                    className="text-[52px] md:text-[80px] font-handwritingJP text-orange font-black leading-[1.0] transition-all duration-[1200ms] opacity-100 scale-100"
+                    style={{ 
+                        textShadow: '0px 10px 30px rgba(255, 107, 0, 0.15)',
+                        filter: 'drop-shadow(0 2px 4px rgba(255,107,0,0.1))'
+                    }}
+                  >
+                    ありがとう
+                  </span>
+                  <span className="text-[22px] md:text-[32px] font-handwritingJP font-bold text-gray-800 mb-3 transform -rotate-6 origin-bottom-left opacity-80">を</span>
+                </div>
 
-          <div className="mb-4">
-            <p className="text-orange font-handwriting text-2xl mb-1 transform -rotate-1 origin-left inline-block opacity-80">
-              Design the future with us.
-            </p>
-            <p className="text-[#333333] font-sans text-[11px] font-bold leading-relaxed tracking-wide opacity-50">
-                不動産のプロとして、<br/>
-                街の景色と誰かの未来を動かそう
-            </p>
-          </div>
+                <span className="block text-[28px] md:text-[36px] font-handwritingJP font-bold text-gray-800 ml-1 mt-2">もらえる</span>
+              </h1>
 
-          <div className="flex flex-col gap-2 w-full max-w-[280px]">
-             <button 
-               onClick={() => onScrollToSection(11)}
-               className="group relative w-full bg-orange text-white h-12 rounded-lg font-black text-xs shadow-lg flex items-center justify-between px-1.5 pl-5 active:scale-90 transition-all duration-400 ease-spring overflow-hidden"
-             >
-               <span className="tracking-[0.05em] relative z-10 text-white text-[11px]">カジュアル面談を予約</span>
-               <div className="w-9 h-9 rounded-md bg-white/20 backdrop-blur-xl flex items-center justify-center transition-all duration-500 relative z-10">
-                 <ArrowRight size={16} className="text-white" strokeWidth={3} />
-               </div>
-             </button>
+              <div className="mt-8 flex items-center gap-4 transition-all duration-1000 opacity-100 translate-x-0">
+                <div className="w-12 h-[1px] bg-navy/10"></div>
+                <p className="text-navy/50 font-sans text-[12px] md:text-[14px] font-bold leading-relaxed tracking-wider">
+                    街の景色と、誰かの未来を動かす仕事。
+                </p>
+              </div>
+            </div>
 
-             <button 
-               onClick={() => onScrollToSection(9)}
-               className="group w-full bg-[#111111] text-white h-9 rounded-lg font-black text-[9px] shadow-lg flex items-center justify-between px-1.5 pl-5 active:scale-95 transition-all duration-300 ease-spring"
-             >
-               <span className="tracking-[0.15em] text-white">募集要項を見る</span>
-               <div className="w-6 h-6 rounded-md border border-white/5 flex items-center justify-center">
-                 <ArrowRight size={12} className="text-white opacity-40" strokeWidth={2} />
-               </div>
-             </button>
-          </div>
+            <div className="flex flex-col gap-3 w-full max-w-[360px] mb-8 md:mb-0 opacity-100 translate-y-0 transition-all duration-1000">
+                <button 
+                  onClick={() => onScrollToSection(11)}
+                  className="group relative w-full"
+                >
+                  <div className="absolute inset-0 bg-orange/40 rounded-[1.2rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                  <div className="relative w-full h-14 bg-navy text-white rounded-[1.2rem] font-bold text-sm flex items-center justify-between px-6 active:scale-[0.98] transition-all duration-300 ease-spring shadow-xl overflow-hidden group-hover:bg-[#1a253a]">
+                        <div className="flex flex-col items-start">
+                            <span className="tracking-[0.05em] relative z-10 text-white text-[13px] font-black flex items-center gap-2">
+                                カジュアル面談
+                                <Sparkles size={12} className="text-yellow-200" />
+                            </span>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 relative z-10 group-hover:bg-white group-hover:text-navy group-hover:rotate-[-45deg]">
+                            <ArrowRight size={16} strokeWidth={2.5} />
+                        </div>
+                  </div>
+                </button>
+
+                <button 
+                  onClick={() => onScrollToSection(9)}
+                  className="group w-full h-12 flex items-center justify-between px-6 rounded-[1rem] hover:bg-gray-50 active:scale-95 transition-all duration-300"
+                >
+                  <span className="text-[12px] font-bold text-navy/60 group-hover:text-navy tracking-wider transition-colors">
+                      募集要項を見る
+                  </span>
+                  <ArrowRight size={14} className="text-navy/30 group-hover:text-orange group-hover:translate-x-1 transition-all" strokeWidth={2} />
+                </button>
+            </div>
         </div>
 
-        {/* Hero Visual - Slightly smaller aspect ratio */}
-        <div className={`w-full max-w-[320px] mx-auto relative transition-all duration-[2000ms] delay-700 ease-spring ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
-          <div className="w-full aspect-[21/10] rounded-[1rem] overflow-hidden shadow-xl border border-white/10 relative group bg-gray-50">
-             <img 
-               src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop" 
-               alt="Team Spirit" 
-               className={`w-full h-full object-cover transition-transform duration-[15s] ease-linear ${isActive ? 'scale-115' : 'scale-100'}`}
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent mix-blend-multiply"></div>
+        {/* Right: Visual */}
+        <div className="mt-auto md:mt-0 w-full h-full relative transition-all duration-[1500ms] opacity-100 translate-y-0 flex items-end md:items-center">
+          <div className="w-full aspect-[4/3] md:aspect-[3/4] md:h-[80%] rounded-t-[3rem] md:rounded-[3rem] overflow-hidden shadow-[0_-10px_40px_-10px_rgba(15,23,42,0.1)] relative group mx-auto max-w-[94%] md:max-w-full bg-gray-50 ring-1 ring-black/5">
+             <div className="absolute inset-0 overflow-hidden">
+                <img 
+                    src="https://github.com/ryoto2323/yorisoi/blob/main/public/yoa.png?raw=true" 
+                    alt="Team Spirit" 
+                    width="800"
+                    height="1000"
+                    className={`w-full h-full object-cover object-[center_30%] transition-transform duration-[20s] ease-linear will-change-transform ${isActive ? 'scale-110' : 'scale-100'}`}
+                />
+             </div>
+             <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent opacity-60"></div>
           </div>
         </div>
 

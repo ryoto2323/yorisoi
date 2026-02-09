@@ -1,160 +1,163 @@
-import React, { useRef, useState, useEffect } from 'react';
+
+import React from 'react';
 import { Section } from './Section';
-import { Clock } from 'lucide-react';
+import { ArrowDown, Zap } from 'lucide-react';
 
 const timelineData = [
   { 
     id: 1,
     time: '09:00', 
-    title: '出社・チームMTG', 
-    desc: '本日の目標とKPIの確認。\nチームで共有し、士気を高めます。',
-    image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=800&auto=format&fit=crop'
+    title: '出社/MTG', 
+    desc: 'ハイタッチで1日を開始。',
+    image: 'https://github.com/ryoto2323/yorisoi/blob/main/public/yod.png?raw=true',
+    rotation: '-2deg',
+    offset: 'mt-0'
   },
   { 
     id: 2,
     time: '10:30', 
-    title: '現地調査', 
-    desc: '担当エリアをiPadで撮影・巡回。\n街の変化を自分の目でチェック！',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop'
+    title: '街歩き調査', 
+    desc: 'エリアの魅力を再発見。',
+    image: 'https://github.com/ryoto2323/yorisoi/blob/main/public/yoe.png?raw=true',
+    rotation: '3deg',
+    offset: 'mt-12 md:mt-0'
   },
   { 
     id: 3,
     time: '13:00', 
     title: 'ランチ', 
-    desc: '先輩おすすめの定食屋へ。\nリフレッシュも大切な仕事！',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'
+    desc: '先輩と本音で話す。',
+    image: 'https://github.com/ryoto2323/yorisoi/blob/main/public/yof.png?raw=true',
+    rotation: '-1.5deg',
+    offset: '-mt-4 md:mt-0'
   },
   { 
     id: 4,
-    time: '14:00', 
-    title: '提案資料作成', 
-    desc: 'CRMツールで顧客データを分析し、\n最適な物件をピックアップ！',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop'
+    time: '14:30', 
+    title: '作戦会議', 
+    desc: '理想をプランにする。',
+    image: 'https://github.com/ryoto2323/yorisoi/blob/main/public/yog.png?raw=true',
+    rotation: '2.5deg',
+    offset: 'mt-8 md:mt-0'
   },
   { 
     id: 5,
     time: '16:00', 
-    title: '内覧案内', 
-    desc: '購入検討のお客様をご案内。\n物件の魅力を現地で伝えます。',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop'
+    title: '現地案内', 
+    desc: '目が輝く瞬間。',
+    image: 'https://github.com/ryoto2323/yorisoi/blob/main/public/yoh.png?raw=true',
+    rotation: '-3deg',
+    offset: '-mt-2 md:mt-0'
   },
   { 
     id: 6,
     time: '18:30', 
-    title: '日報入力・退社', 
-    desc: '残業は原則なし。\nメリハリをつけて働き、明日に備えます。',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop'
+    title: '帰宅', 
+    desc: '明日への準備。',
+    image: 'https://github.com/ryoto2323/yorisoi/blob/main/public/yoi.png?raw=true',
+    rotation: '1deg',
+    offset: 'mt-10 md:mt-0'
   },
 ];
 
-interface Section4_TimelineProps {
-  isActive: boolean;
-}
+const Tape: React.FC<{ className?: string }> = ({ className }) => (
+  <div 
+    className={`absolute h-4 w-12 bg-white/60 backdrop-blur-[2px] shadow-sm z-20 pointer-events-none ${className}`} 
+    style={{ clipPath: 'polygon(5% 0%, 95% 0%, 100% 90%, 0% 100%)' }}
+  ></div>
+);
 
-export const Section4_Timeline: React.FC<Section4_TimelineProps> = ({ isActive }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-        const scrollPosition = container.scrollLeft;
-        const cardWidth = container.offsetWidth * 0.75; 
-        const index = Math.round(scrollPosition / cardWidth);
-        setActiveIndex(Math.min(Math.max(index, 0), timelineData.length - 1));
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, []);
-
+export const Section4_Timeline: React.FC<{ isActive: boolean }> = ({ isActive }) => {
   return (
     <Section 
       id={4} 
       isActive={isActive}
-      bgOverlay="bg-gray-50/95"
+      className="bg-[#FAFAFA]"
+      bgOverlay="bg-transparent"
     >
-      <div className="flex flex-col h-full pt-16 pb-16 relative z-10 overflow-hidden">
+      <div className="flex flex-col relative z-10 w-full min-h-full pt-16 px-4 pb-16 overflow-visible">
         
-        {/* Header - Scaled down */}
-        <div className={`px-4 mb-4 transition-all duration-700 flex-shrink-0 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-[3px] bg-orange rounded-full"></div>
-            <span className="text-orange text-[8px] font-mono tracking-[0.1em] font-black">1 DAY FLOW</span>
-          </div>
-          <h2 className="text-xl font-sans font-black text-navy leading-tight">
-            不動産営業<br/>
-            『入社1年目』の<span className="text-blue">リアル</span>
-          </h2>
+        {/* Header */}
+        <div className={`flex-shrink-0 mb-8 md:mb-12 transition-all duration-1000 ease-soft ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <span className="text-[10px] font-mono font-black text-orange tracking-[0.2em] uppercase block mb-1">DAILY COLLAGE</span>
+            <h2 className="text-navy text-[26px] md:text-[32px] font-handwritingJP font-bold leading-tight">
+                1年目の、<span className="text-orange underline decoration-orange/20 underline-offset-4">リアルな一日。</span>
+            </h2>
         </div>
 
-        {/* Horizontal Card Carousel - Smaller Cards */}
-        <div 
-          ref={scrollRef}
-          className="flex-1 flex overflow-x-auto snap-x snap-mandatory no-scrollbar px-4 gap-4 items-center pb-2"
-        >
-           {timelineData.map((item, index) => (
-             <div 
-               key={item.id}
-               className={`
-                 relative flex-shrink-0 snap-center
-                 w-[75vw] max-w-[280px] aspect-[4/5]
-                 bg-white rounded-[1.5rem] shadow-lg overflow-hidden border border-gray-100
-                 flex flex-col
-                 transition-all duration-500
-               `}
-               style={{
-                  opacity: isActive ? 1 : 0,
-                  transform: isActive ? 'scale(1)' : 'scale(0.97)',
-                  transitionDelay: `${index * 100}ms`
-               }}
-             >
-                {/* Top Half: Image - Reduced height ratio */}
-                <div className="h-[40%] w-full relative overflow-hidden group">
-                   <img 
-                      src={item.image} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                   />
-                   <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent flex items-end p-3">
-                      <div className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full flex items-center gap-1.5">
-                         <Clock size={10} className="text-orange" />
-                         <span className="text-[10px] font-mono font-black text-navy tracking-widest">{item.time}</span>
-                      </div>
-                   </div>
+        {/* Dense Scrapbook Grid Area */}
+        <div className="flex-grow flex items-center justify-center relative w-full">
+            <div className="w-full relative">
+                
+                {/* Mobile Path (Hidden on Desktop) */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible md:hidden" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path 
+                      d="M50,5 C80,15 20,25 50,35 C80,45 20,55 50,65 C80,75 20,85 50,95" 
+                      fill="none" 
+                      stroke="rgba(255,107,0,0.15)" 
+                      strokeWidth="0.5" 
+                      strokeDasharray="2 2"
+                      className={`transition-all duration-[3000ms] ${isActive ? 'opacity-100' : 'opacity-0'}`}
+                    />
+                </svg>
+
+                {/* Content Layout: 2 Columns on Mobile, 3 Columns on Desktop */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 items-start relative z-10">
+                    
+                    {timelineData.map((item, idx) => (
+                        <div 
+                            key={item.id} 
+                            className={`
+                                relative bg-white p-1.5 pb-2.5 shadow-soft border border-gray-100 rounded-sm transition-all duration-[1000ms]
+                                ${/* Apply mobile offset logic only on mobile */ ''}
+                                ${/* Mobile offsets are baked into data, we need to override them on md */ ''}
+                                md:mt-0 md:transform-none
+                                ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}
+                            `}
+                            style={{ 
+                                /* On mobile: use rotation from data. On Desktop: randomize slightly or reset */
+                                transform: isActive ? (window.innerWidth >= 768 ? `rotate(${Math.random() * 4 - 2}deg)` : `rotate(${item.rotation})`) : 'rotate(0deg)',
+                                marginTop: window.innerWidth < 768 ? (item.offset.includes('-mt') ? '-1rem' : (item.offset.includes('mt-12') ? '3rem' : (item.offset.includes('mt-8') ? '2rem' : '0'))) : '0',
+                                transitionDelay: `${idx * 150}ms`
+                            }}
+                        >
+                            <Tape className={`-top-2 ${idx % 2 === 0 ? 'left-4 rotate-[-15deg]' : 'right-4 rotate-[15deg]'}`} />
+                            
+                            <div className={`absolute -top-2 ${idx % 2 === 0 ? '-right-2' : '-left-2'} z-30 ${idx % 2 === 0 ? 'bg-navy' : 'bg-orange'} text-white font-mono font-black text-[8px] px-1.5 py-0.5 rounded shadow-lg transform ${idx % 2 === 0 ? 'rotate-6' : '-rotate-6'}`}>
+                                {item.time}
+                            </div>
+                            
+                            <div className="w-full aspect-[4/3] overflow-hidden mb-1.5 bg-gray-50">
+                                <img 
+                                  src={item.image} 
+                                  alt={item.title} 
+                                  className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-500 hover:scale-110" 
+                                  loading="lazy"
+                                  decoding="async"
+                                />
+                            </div>
+                            
+                            <div className="px-1">
+                                <h3 className="text-[10px] md:text-[12px] font-black text-navy leading-none mb-0.5">{item.title}</h3>
+                                <p className="text-[8px] md:text-[10px] font-bold text-gray-400 leading-tight">{item.desc}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
-                {/* Bottom Half: Content - Scaled down text */}
-                <div className="h-[60%] w-full p-5 flex flex-col justify-center bg-white relative">
-                   <div className="absolute top-3 right-5 text-[28px] font-sans font-black text-gray-50 leading-none select-none">
-                      {item.id.toString().padStart(2, '0')}
-                   </div>
-
-                   <h3 className="text-base font-bold text-navy mb-2 relative z-10">
-                      {item.title}
-                   </h3>
-                   <p className="text-[11px] text-gray-400 font-bold leading-relaxed whitespace-pre-line relative z-10">
-                      {item.desc}
-                   </p>
+                {/* Annotations */}
+                <div className={`absolute top-[40%] left-[45%] -translate-x-1/2 -rotate-12 transition-all duration-1000 delay-1000 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+                    <span className="font-handwritingJP text-orange/60 text-[11px] md:text-[14px] font-bold whitespace-nowrap bg-white/40 px-2 py-1 rounded-full border border-orange/10">最高のチーム！</span>
                 </div>
-             </div>
-           ))}
-           <div className="w-1 flex-shrink-0" />
+            </div>
         </div>
 
-        {/* Pagination Dots - Smaller */}
-        <div className="flex justify-center items-center gap-1.5 h-6 mt-1">
-            {timelineData.map((_, idx) => (
-                <div 
-                    key={idx}
-                    className={`
-                        h-1.5 rounded-full transition-all duration-300
-                        ${activeIndex === idx ? 'w-6 bg-orange' : 'w-1.5 bg-gray-300'}
-                    `}
-                />
-            ))}
+        {/* Footer Hint */}
+        <div className={`mt-auto pt-8 flex-shrink-0 flex flex-col items-center transition-all duration-1000 delay-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-[8px] font-black text-navy/10 tracking-[0.5em] uppercase mb-1">Scroll down</p>
+            <div className="animate-bounce text-orange/30">
+                <ArrowDown size={14} />
+            </div>
         </div>
 
       </div>
