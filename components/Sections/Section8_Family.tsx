@@ -84,7 +84,7 @@ export const Section8_Family: React.FC<Section8_FamilyProps> = ({ isActive }) =>
             <div className="flex-[1] flex md:flex-col gap-4 min-h-0">
                 
                 {/* Housing Card */}
-                <div className="flex-1 bg-white rounded-[2rem] p-4 md:p-6 border border-blue-50 shadow-soft flex flex-col justify-between opacity-100 transition-all duration-1000 hover:shadow-lg hover:-translate-y-1">
+                <div className="flex-1 bg-white rounded-[2rem] p-4 pb-8 md:p-6 md:pb-8 border border-blue-50 shadow-soft flex flex-col justify-between opacity-100 transition-all duration-1000 hover:shadow-lg hover:-translate-y-1 min-h-[180px]">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-1">
                         <Home size={18} className="md:w-6 md:h-6" />
                     </div>
@@ -95,7 +95,7 @@ export const Section8_Family: React.FC<Section8_FamilyProps> = ({ isActive }) =>
                 </div>
 
                 {/* License Card */}
-                <div className="flex-1 bg-white rounded-[2rem] p-4 md:p-6 border border-green-50 shadow-soft flex flex-col justify-between opacity-100 transition-all duration-1000 hover:shadow-lg hover:-translate-y-1">
+                <div className="flex-1 bg-white rounded-[2rem] p-4 pb-8 md:p-6 md:pb-8 border border-green-50 shadow-soft flex flex-col justify-between opacity-100 transition-all duration-1000 hover:shadow-lg hover:-translate-y-1 min-h-[180px]">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600 mb-1">
                         <BadgeCheck size={18} className="md:w-6 md:h-6" />
                     </div>

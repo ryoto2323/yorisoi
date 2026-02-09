@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Section } from './Section';
-import { ArrowRight, Sparkles, Calendar, MapPin, Clock, Coffee, ShieldCheck, HeartHandshake, Smile, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Sparkles, Calendar, MapPin, Clock, Coffee, ShieldCheck, HeartHandshake, Smile, CheckCircle2, FileX, Shirt } from 'lucide-react';
 
 interface Section11_ActionProps {
   isActive: boolean;
@@ -86,9 +86,10 @@ export const Section11_Action: React.FC<Section11_ActionProps> = ({ isActive, on
             </div>
 
             {/* 3D Card Component */}
+            {/* Modified Aspect Ratio for Mobile to prevent squashed image: aspect-[3/4] */}
             <div 
                 className={`
-                    relative w-full aspect-[1.58/1] md:aspect-[4/5] perspective-[1000px] mb-12 md:mb-0
+                    relative w-full aspect-[3/4] md:aspect-[4/5] perspective-[1000px] mb-8 md:mb-0
                     transition-all duration-[1200ms] delay-300 ease-spring will-change-transform
                     ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}
                 `}
@@ -156,6 +157,18 @@ export const Section11_Action: React.FC<Section11_ActionProps> = ({ isActive, on
                           }}
                         ></div>
                     </div>
+                </div>
+            </div>
+
+            {/* --- ADDED FOR MOBILE: EXTRA INFO CHIPS --- */}
+            <div className={`md:hidden mb-12 grid grid-cols-2 gap-3 w-full transition-all duration-1000 delay-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center justify-center text-center backdrop-blur-md border border-white/10 shadow-lg">
+                    <FileX size={20} className="text-orange mb-2" />
+                    <span className="text-[10px] font-bold text-white tracking-wider">履歴書不要</span>
+                </div>
+                <div className="bg-white/5 rounded-xl p-3 flex flex-col items-center justify-center text-center backdrop-blur-md border border-white/10 shadow-lg">
+                    <Shirt size={20} className="text-orange mb-2" />
+                    <span className="text-[10px] font-bold text-white tracking-wider">私服でOK</span>
                 </div>
             </div>
         </div>

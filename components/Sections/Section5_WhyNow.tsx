@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Section } from './Section';
-import { UserPlus, ArrowUpRight, Maximize2, Layers } from 'lucide-react';
+import { UserPlus, Maximize2, Layers } from 'lucide-react';
 
 interface Section5_WhyNowProps {
   isActive: boolean;
@@ -86,7 +86,6 @@ export const Section5_WhyNow: React.FC<Section5_WhyNowProps> = ({ isActive }) =>
                         なぜ今、<br/>
                         <span className="text-orange relative inline-block italic">
                             「増員」
-                            <ArrowUpRight className="absolute -top-1 -right-6 text-orange opacity-40" size={24} />
                         </span>
                         なのか。
                     </h2>
@@ -108,9 +107,9 @@ export const Section5_WhyNow: React.FC<Section5_WhyNowProps> = ({ isActive }) =>
                     </div>
 
                     <div className={`mt-10 transition-all duration-1000 delay-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}>
-                        <p className="text-[17px] font-handwritingJP font-bold text-navy leading-tight border-b border-navy/[0.05] pb-4">
+                        <p className="text-[15px] font-handwritingJP font-bold text-navy leading-tight border-b border-navy/[0.05] pb-4">
                             「1人の限界」が、<br/>
-                            <span className="text-[28px] text-red-500 tracking-tighter">優しさの限界</span>になってはいけない。
+                            <span className="text-[24px] text-red-500 tracking-tighter">優しさの限界</span>になってはいけない。
                         </p>
                     </div>
                 </div>
